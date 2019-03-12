@@ -33,18 +33,11 @@ Classes to handle interactions on the underlying graph of relations. **Every ser
 #### 3. graph-engine (`server/engine`)
 Library of classes to abstract the engine (graph creation, traversal, and operations) from the server. Exports a single `index.js`, which is configurable to any implemented engine (in this case `graphlib`), and **must implement `interfaces/IGraphEngine`**.
 
-## Admin tool:
-
-After running the server, admin tool simulates a client although in CLI mode. It expects a server to be running at http://localhost:3000, or as defined by the `server-url` JSON param under admin-config.
-Use the following to run the client:
-```
-> npm run admin [--conf "config file location" | default: "./admin-config.json"]
-```
-
+## CLIController:
+After running the server, the `controllers/CliController` class simulates a client although in CLI mode.
 The following commands are available on the CLI:
 ```
-  # Start a traversal on the world loaded 
-  > start-travel [node-key|empty for random] [attributes (blank for default)|verrides + custom attributes]
+  > start-travel [node-key|empty for random] [attributes (blank for default)|verrides + custom attributes] # Start a new traversal on the world loaded at a defined location (as a new traveller)
   > peek [local|world] [-d <distance>] # Print the nodes around location of traveller, upto 'distance' depth
   > reload <local|world> [-d <distance>] # Reloads either the travelling nodes 'locality' (a region of the graph the traveller can "see", defined by the default attrs, processed locally on the travelling node), or the entire world (using the files under assets, and the logic defined by the server script. The server side script accepts this command only from 'localhost'.)
   > exit
