@@ -1,0 +1,23 @@
+{
+  "name": "graphlib-test",
+  "version": "1.0.0",
+  "description": "Testing the capabilities of a graph driven data engine architecture.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varevarao/graphlib-test.git"
+  },
+  "keywords": [
+    "graphlib",
+    "data"
+  ],
+  "author": "varevarao@gmail.com",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/varevarao/graphlib-test/issues"
+  },
+  "homepage": "https://github.com/varevarao/graphlib-test#readme"
+}
