@@ -1,3 +1,4 @@
+
 # graphlib-test
 Implementing a graph based relationship between objects with assets (defined as nodes).
 Edges are behaviours that define transitions between the nodes.
@@ -10,11 +11,27 @@ Install the required dependencies
 ```
 > npm i
 ```
-The directory at `assets/` contains the world `nodes/` and `associations/` (recipes).
+
 Run the server by executing:
 ```
-> npm run server
+> npm run server [--conf "config file location" | default: "./server-config.json"]
 ```
+
+### Server:
+The directory at `assets/` contains the world `nodes/` and `associations/` (recipes). The class `GraphTestServer` under `server/index.js` creates and runs the server. The type of server run depends on the `interactionControl`  parameter under config (`default: 'cli'`).
+The source code under `server/` is distributed as follows:
+
+#### 1. controllers (`server/controllers`)
+Endpoint classes to handle the external interaction interfaces. **Every controller implements `interfaces/IInteractionControl`**.
+Currently only includes a `CliController`, for the cli operations.
+
+#### 2. services (`server/services`)
+Classes to handle interactions on the underlying graph of relations. **Every service implements `interfaces/IGraphService`.**
+    - `GraphService` Creates the graph using underlying relations, and nodes.
+    - `TravellerService` Maintains a list of travellers hashed by their ID. Controls creation of traveller objects, and interactions between travellers, or traveller and the graph.
+    - `AuthService` Auth implementation, should export a `passport-js` compliant interface.
+#### 3. graph-engine (`server/engine`)
+Library of classes to abstract the engine (graph creation, traversal, and operations) from the server. Exports a single `index.js`, which is configurable to any implemented engine (in this case `graphlib`), and **must implement `interfaces/IGraphEngine`**.
 
 ## Admin tool:
 
