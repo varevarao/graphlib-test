@@ -23,5 +23,9 @@
   "homepage": "https://github.com/varevarao/graphlib-test#readme",
   "devDependencies": {
     "mocha": "^6.0.2"
+  },
+  "dependencies": {
+    "@types/graphlib": "^2.1.4",
+    "graphlib": "^2.1.7"
   }
 }
